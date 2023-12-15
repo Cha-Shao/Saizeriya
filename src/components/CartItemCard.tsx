@@ -33,7 +33,7 @@ const CartItemCard = (item: Item) => {
               }}
             >
               <img
-                src={AddIcon}
+                src={MinusIcon}
                 alt=""
                 className="w-4 ml-1"
               />
@@ -49,7 +49,7 @@ const CartItemCard = (item: Item) => {
               }}
             >
               <img
-                src={MinusIcon}
+                src={AddIcon}
                 alt=""
                 className="w-4"
               />
