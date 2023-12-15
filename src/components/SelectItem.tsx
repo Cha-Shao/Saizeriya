@@ -9,6 +9,7 @@ import {
 } from "react"
 import Hero from "./Hero"
 import Search from "./Search"
+import GithubIcon from '../assets/github.svg'
 
 const SelectItem = ({
   storeId,
@@ -78,8 +79,8 @@ const SelectItem = ({
             })}
           </ul>
         </aside>
-        <article className="col-span-3">
-          <ul className="mb-20">
+        <article className="col-span-3 mb-20">
+          <ul>
             {menu.map((category, i) => (
               <li key={i} id={`category-${category.category}`} className="relative">
                 <p className="p-2 sticky top-0 bg-white z-10">{category.category}</p>
@@ -91,6 +92,13 @@ const SelectItem = ({
               </li>
             ))}
           </ul>
+          <div className="px-2 my-2 flex flex-wrap gap-4 justify-center text-xs text-gray-500">
+            <a href="https://github.com/Cha-Shao">© 2023 Cha_Shao</a>
+            <a href="https://github.com/Cha-Shao/Saizeriya" className="flex">
+              <img src={GithubIcon} alt="" className="w-3 mr-1" />
+              Source code
+            </a>
+          </div>
         </article>
       </main>
     </div>
