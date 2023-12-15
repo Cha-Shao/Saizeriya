@@ -17,6 +17,7 @@ const Cart = () => {
   const closed = new Date().getHours() >= 22 || new Date().getHours() < 8
 
   const [expand, setExpand] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [itemList, setItemList] = useContext(DishListContext)!
 
   // 如果购物车为空，自动收起
