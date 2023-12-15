@@ -4,7 +4,7 @@ const Error = () => {
       <img
         src="/logo.webp"
         alt="Saizeriya"
-        className="w-1/2 mx-auto mb-6"
+        className="w-1/2 mx-auto max-w-[128px] mb-6"
       />
       <h1 className="text-4xl font-bold mb-2 text-main">欢迎光临萨莉亚</h1>
       <p className="text-lg text-gray-500">但是您的访问链接有些问题...</p>
