@@ -52,7 +52,7 @@ function App() {
   )
 
   return (
-    <div>
+    <div className='relative'>
       <Hero store={store} tableId={tableId} />
       <Search onClick={() => setSearching(true)} />
       <AnimatePresence>
@@ -73,7 +73,7 @@ function App() {
           <ul>
             {menu.map((category, i) => (
               <li key={i} id={`category-${category.category}`} className="relative">
-                <h2 className="p-2 sticky top-0 bg-white z-10">{category.category}</h2>
+                <h2 className="p-2 sticky top-14 bg-white z-10">{category.category}</h2>
                 <ul>
                   {category.list.map((item, j) => (
                     <ItemCard

@@ -24,7 +24,7 @@ const MenuCategoryList = () => {
 
   return (
     <aside className="relative bg-gray-100">
-      <ul className="sticky top-0 mb-20">
+      <ul className="sticky top-14 mb-20">
         {menu.map((category, i) => {
           const active = activeCategory === i
 
