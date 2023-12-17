@@ -6,14 +6,18 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import SelectCustomerCount from './components/SelectCustomerCount.tsx';
+import CountPage from './components/CountPage.tsx';
+import Error from './components/Error.tsx';
 
 const router = createBrowserRouter([{
   path: '/',
   element: <App />
 }, {
   path: '/count',
-  element: <SelectCustomerCount />
+  element: <CountPage />
+}, {
+  path: '*',
+  element: <Error />
 }])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

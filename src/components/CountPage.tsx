@@ -8,7 +8,7 @@ import {
 import Error from "./Error"
 import { stores } from "../assets/stores"
 
-export default function SelectCustomerCount() {
+export default function CountPage() {
   const inputRef = useRef<HTMLInputElement>(null)
   const [people, setPeople] = useState(4)
 
@@ -40,8 +40,9 @@ export default function SelectCustomerCount() {
           className="w-1/2 mx-auto max-w-[128px] mb-6"
         />
         <h1 className="text-4xl font-bold mb-2 text-main">欢迎光临萨莉亚</h1>
-        <p className="text-lg text-gray-500">{store.name}114号台</p>
+        <p className="text-lg text-gray-500">{store.name}{tableId}号台</p>
       </div>
+      <p className="text-center text-lg text-main">请选择用餐人数</p>
       <div className="grid grid-cols-3 gap-2 p-4">
         <button
           className="selectPeopleButton"
@@ -53,7 +54,8 @@ export default function SelectCustomerCount() {
           }
           )}
         >
-          1
+          <span>1</span>
+          <span className="text-base">人</span>
         </button>
         <button
           className="selectPeopleButton"
@@ -65,7 +67,8 @@ export default function SelectCustomerCount() {
           }
           )}
         >
-          2
+          <span>2</span>
+          <span className="text-base">人</span>
         </button>
         <button
           className="selectPeopleButton"
@@ -77,7 +80,8 @@ export default function SelectCustomerCount() {
           }
           )}
         >
-          3
+          <span>3</span>
+          <span className="text-base">人</span>
         </button>
         <div className="col-span-3 flex items-center my-2">
           <div className="w-full h-[1px] bg-gray-300"></div>
