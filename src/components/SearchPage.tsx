@@ -24,7 +24,7 @@ const SearchPage = ({
 
   return (
     <div>
-      <header className='p-2 flex border-b border-b-gray-100'>
+      <header className='sticky top-0 p-2 flex bg-white z-10 border-b border-b-gray-100'>
         <button className='p-3' onClick={onClose}>
           <img src={ArrowIcon} alt="" className='w-4 -rotate-90' />
         </button>
@@ -35,7 +35,7 @@ const SearchPage = ({
           <input
             type="text"
             placeholder="搜索菜品名或编号"
-            className="px-4 py-2 pl-10 bg-gray-100 rounded-full w-full outline-none"
+            className="px-4 py-2 pl-10 bg-gray-100 rounded-full w-full outline-none placeholder:text-gray-400"
             value={keyword}
             onChange={e => {
               setKeyword(e.target.value)
@@ -45,18 +45,22 @@ const SearchPage = ({
         </div>
       </header>
       <main className='px-2'>
-        <ul>
-          {result.map((item, i) => (
-            <li key={i}>
-              <ItemCard
-                item={item}
-                onClick={() => { }}
-                itemList={itemList}
-                setItemList={setItemList}
-              />
-            </li>
-          ))}
-        </ul>
+        {result.length ? (
+          <ul>
+            {result.map((item, i) => (
+              <li key={i}>
+                <ItemCard
+                  item={item}
+                  onClick={() => { }}
+                  itemList={itemList}
+                  setItemList={setItemList}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className='text-center text-gray-500 p-4'>没有找到相关菜品</div>
+        )}
       </main>
     </div>
   )

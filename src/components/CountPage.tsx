@@ -85,7 +85,7 @@ export default function CountPage() {
         </button>
         <div className="col-span-3 flex items-center my-2">
           <div className="w-full h-[1px] bg-gray-300"></div>
-          <span className="mx-2 text-gray-400">或</span>
+          <span className="mx-2 text-gray-500">或</span>
           <div className="w-full h-[1px] bg-gray-300"></div>
         </div>
         <div className="col-span-3 grid grid-cols-3 border border-primary rounded-lg">
