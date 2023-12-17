@@ -31,7 +31,7 @@ const MenuCategoryList = () => {
           return (
             <li key={i} className={classNames(
               'border-l-2 border-transparent',
-              active && 'border-main'
+              active && '!border-main'
             )}>
               <button
                 className={classNames(
