@@ -15,6 +15,7 @@ import Focus from './components/Focus'
 import MenuCategoryList from './components/MenuCategoryList'
 import ItemCard from './components/ItemCard'
 import GithubIcon from './assets/github.svg'
+import NetlifyLogo from './assets/netlify_logo.svg'
 import OrderPage from './components/OrderPage'
 
 function App() {
@@ -86,11 +87,17 @@ function App() {
               </li>
             ))}
           </ul>
-          <footer className="px-2 my-4 flex flex-wrap gap-4 justify-center text-xs text-gray-500">
-            <a href="https://github.com/Cha-Shao">© 2023 Cha_Shao</a>
+          <footer className="px-2 my-2 flex flex-wrap gap-x-4 gap-y-2 justify-center text-xs text-gray-500">
+            <a href="https://github.com/Cha-Shao">
+              © 2023 Cha_Shao
+            </a>
             <a href="https://github.com/Cha-Shao/Saizeriya" className="flex">
-              <img src={GithubIcon} alt="" className="w-3 mr-1" />
-              Source code
+              <img src={GithubIcon} alt="github" className="w-3 mr-1" />
+              <span>Source code</span>
+            </a>
+            <a href="https://www.netlify.com/" className='flex'>
+              <span>Hosted on</span>
+              <img src={NetlifyLogo} alt="netlify" className='h-4 ml-1' />
             </a>
           </footer>
         </article>
