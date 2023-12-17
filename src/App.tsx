@@ -16,6 +16,7 @@ import MenuCategoryList from './components/MenuCategoryList'
 import ItemCard from './components/ItemCard'
 import GithubIcon from './assets/github.svg'
 import NetlifyLogo from './assets/netlify_logo.svg'
+import StickerLogo from './assets/sticker_logo.png'
 import OrderPage from './components/OrderPage'
 
 function App() {
@@ -98,6 +99,10 @@ function App() {
             <a href="https://www.netlify.com/" className='flex'>
               <span>Hosted on</span>
               <img src={NetlifyLogo} alt="netlify" className='h-4 ml-1' />
+            </a>
+            <a href="https://sticker.hsott.cn/" className='flex'>
+              <span>友链：大贴纸</span>
+              <img src={StickerLogo} alt="sticker" className='h-4 ml-1' />
             </a>
           </footer>
         </article>

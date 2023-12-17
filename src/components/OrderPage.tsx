@@ -62,6 +62,7 @@ const OrderPage = ({
                   onMinus={item => setItemList(itemList => {
                     const newItemList = [...itemList]
                     newItemList.splice(newItemList.findIndex(t => t.id === item.id), 1)
+                    if (newItemList.length === 0) onClose()
                     return newItemList
                   })}
                 />
