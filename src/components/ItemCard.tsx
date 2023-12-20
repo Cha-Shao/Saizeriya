@@ -63,14 +63,14 @@ const ItemCard = ({
           <Tags {...item} />
           {!closed && (
             <div className="relative">
-              {itemList.find(dish => dish.id === item.id) && (
+              {itemList.find(thisItem => thisItem.id === item.id) && (
                 <span className={classNames(
                   'absolute -right-1 -top-1',
                   'w-4 h-4 rounded-full bg-red-500',
                   'text-xs text-white',
                   'flex justify-center items-center'
                 )}>
-                  {itemList.filter(dish => dish.id === item.id).length}
+                  {itemList.filter(thisItem => thisItem.id === item.id).length}
                 </span>
               )}
               <button

@@ -4,7 +4,7 @@ import {
 import './App.css'
 import Error from './components/Error'
 import Cart from './components/Cart'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Item, menu } from './assets/menu'
 import { stores } from './assets/stores'
 import SearchPage from './components/SearchPage'
@@ -18,6 +18,7 @@ import GithubIcon from './assets/github.svg'
 import NetlifyLogo from './assets/netlify_logo.svg'
 import StickerLogo from './assets/sticker_logo.png'
 import OrderPage from './components/OrderPage'
+import InfiniteDrink from './components/InfiniteDrink'
 
 function App() {
   const [searchParams] = useSearchParams()
@@ -25,11 +26,22 @@ function App() {
   const tableId = parseInt(searchParams.get('tableId') || 'undefined')
   const customerCount = parseInt(searchParams.get('customerCount') || 'undefined')
 
-  const [itemList, setItemList] = useState<Item[]>([])
+  const [itemList, setItemList] = useState<Item[]>([
+    menu
+      .find(category => category.category === '前菜')!
+      .list.find(item => item.id === 1240)!
+  ])
   const store = stores.find(store => store.id === storeId)
   const [searching, setSearching] = useState(false)
   const [ordering, setOrdering] = useState(false)
   const [focus, setFocus] = useState<Item | null>(null)
+
+  useEffect(() => {
+    const closed = new Date().getHours() >= 22 || new Date().getHours() < 8
+    if (!closed) {
+      alert('海带丝真的很好吃！')
+    }
+  }, [])
 
   if (!store || !storeId || !tableId || !customerCount) return <Error />
 
@@ -71,22 +83,31 @@ function App() {
         <MenuCategoryList />
         <article className="col-span-3 mb-20">
           <ul>
-            {menu.map((category, i) => (
-              <li key={i} id={`category-${category.category}`} className="relative">
-                <h2 className="p-2 sticky top-14 bg-white z-10">{category.category}</h2>
-                <ul>
-                  {category.list.map((item, j) => (
-                    <ItemCard
-                      key={j}
-                      item={item}
-                      onClick={() => setFocus(item)}
-                      itemList={itemList}
-                      setItemList={setItemList}
-                    />
-                  ))}
-                </ul>
-              </li>
-            ))}
+            {menu.map((category, i) => {
+              if (category.category === '畅饮') return (
+                <InfiniteDrink
+                  key={i}
+                  itemList={itemList}
+                  setItemList={setItemList}
+                />
+              )
+              return (
+                <li key={i} id={`category-${category.category}`} className="relative">
+                  <h2 className="p-2 sticky top-14 bg-white">{category.category}</h2>
+                  <ul>
+                    {category.list.map((item, j) => (
+                      <ItemCard
+                        key={j}
+                        item={item}
+                        onClick={() => setFocus(item)}
+                        itemList={itemList}
+                        setItemList={setItemList}
+                      />
+                    ))}
+                  </ul>
+                </li>
+              )
+            })}
           </ul>
           <footer className="px-2 my-2 flex flex-wrap gap-x-4 gap-y-2 justify-center text-xs text-gray-500">
             <a href="https://github.com/Cha-Shao">
@@ -110,7 +131,9 @@ function App() {
       <Cart
         itemList={itemList}
         setItemList={setItemList}
-        onOrder={() => setOrdering(true)}
+        onOrder={() => {
+          if (itemList.length) setOrdering(true)
+        }}
       />
     </div>
   )

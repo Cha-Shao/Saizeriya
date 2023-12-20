@@ -27,7 +27,7 @@ const Search = ({
 
   return (
     <div
-      className="p-2 bg-white -mt-6 sticky top-0 z-20"
+      className="p-2 bg-white -mt-6 sticky top-0 z-10"
       style={{
         borderRadius: `${scrollDownValue}px ${scrollDownValue}px 0 0`
       }}
