@@ -38,9 +38,8 @@ function App() {
 
   useEffect(() => {
     const closed = new Date().getHours() >= 22 || new Date().getHours() < 8
-    if (!closed) {
+    if (!closed)
       alert('海带丝真的很好吃！')
-    }
   }, [])
 
   if (!store || !storeId || !tableId || !customerCount) return <Error />

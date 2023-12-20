@@ -14,6 +14,8 @@ const InfiniteDrink = ({
   itemList: Item[]
   setItemList: Dispatch<SetStateAction<Item[]>>
 }) => {
+  const closed = new Date().getHours() >= 22 || new Date().getHours() < 8
+
   const category = menu.find(category => category.category === '畅饮')!
 
   return (
@@ -30,7 +32,10 @@ const InfiniteDrink = ({
               ? 'border-primary'
               : 'border-transparent',
           )}
-          onClick={() => setItemList(itemList => [...itemList, category.list[0]])}
+          onClick={() => {
+            if (!closed)
+              setItemList(itemList => [...itemList, category.list[0]])
+          }}
         >
           <div className="mb-1">
             <div className="flex items-center">
@@ -39,7 +44,8 @@ const InfiniteDrink = ({
             </div>
             <p className="text-xs text-gray-500">{category.list[0].desc}</p>
           </div>
-          <div className="flex justify-between items-center">
+
+          {!closed ? (<div className="flex justify-between items-center">
             <span className="text-main">
               <span className="text-xs">￥</span>
               <span className="text-xl font-bold">{category.list[0].price}</span>
@@ -60,6 +66,11 @@ const InfiniteDrink = ({
               </button>
             </div>
           </div>
+          ) : (
+            <button className="px-2 py-1 bg-gray-200 rounded-full text-xs text-gray-400">
+              休息中
+            </button>
+          )}
         </div>
         <div
           className={classNames(
@@ -84,9 +95,15 @@ const InfiniteDrink = ({
             </div>
             <p className="text-xs text-gray-500">{category.list[1].desc}</p>
           </div>
-          <button className="w-full py-1 bg-gray-200 rounded-full text-xs">
-            无需畅饮
-          </button>
+          {!closed ? (
+            <button className="w-full py-1 bg-gray-200 rounded-full text-xs">
+              无需畅饮
+            </button>
+          ) : (
+            <button className="px-2 py-1 bg-gray-200 rounded-full text-xs text-gray-400">
+              休息中
+            </button>
+          )}
         </div>
       </div>
     </li>
